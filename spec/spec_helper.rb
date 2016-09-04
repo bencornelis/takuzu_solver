@@ -1,0 +1,8 @@
+require "rspec"
+require "ext/array"
+require "strategy"
+require "strategy/identical_lines"
+require "strategy/matching_counts"
+require "strategy/two_in_a_row"
+require "strategy/two_separated"
+require "takuzu"
