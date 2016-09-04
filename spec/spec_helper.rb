@@ -1,5 +1,6 @@
 require "rspec"
 require "ext/array"
+require "ext/string"
 require "strategy"
 require "strategy/identical_lines"
 require "strategy/matching_counts"

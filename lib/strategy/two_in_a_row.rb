@@ -4,10 +4,10 @@ class TwoInARow < Strategy
     lines.each do |line|
       str = line.join
       all_matches = [
-        matches(str, ".11"),
-        matches(str, "11."),
-        matches(str, ".00"),
-        matches(str, "00."),
+        str.matches(".11"),
+        str.matches("11."),
+        str.matches(".00"),
+        str.matches("00."),
       ].select { |matches| matches[:found] }
 
       if all_matches.any?

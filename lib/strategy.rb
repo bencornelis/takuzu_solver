@@ -26,18 +26,4 @@ class Strategy
   def neg
     {"0" => "1", "1" => "0"}
   end
-
-  def matches(str, sub_str)
-    starts = []
-    i = str.index(sub_str)
-    until i.nil?
-      starts << i
-      i = str.index(sub_str, i + sub_str.length)
-    end
-    {
-      sub_str: sub_str,
-      starts: starts,
-      found: starts.any?
-    }
-  end
 end

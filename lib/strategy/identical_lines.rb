@@ -5,7 +5,7 @@ class IdenticalLines < Strategy
     lines.each do |line|
       str = line.join
       next unless str.count(".") == 2
-      s1, s2 = matches(str, ".")[:starts]
+      s1, s2 = str.matches(".")[:starts]
       full_lines.each do |full_line|
         if equal_off_empties?(line, full_line)
           line[s1] = full_line[s2]

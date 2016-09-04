@@ -4,8 +4,8 @@ class TwoSeparated < Strategy
     lines.each do |line|
       str = line.join
       all_matches = [
-        matches(str, "1.1"),
-        matches(str, "0.0"),
+        str.matches("1.1"),
+        str.matches("0.0"),
       ].select { |matches| matches[:found] }
 
       if all_matches.any?
