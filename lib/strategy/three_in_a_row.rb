@@ -4,7 +4,7 @@ class ThreeInARow < Strategy
     lines.each do |line|
       matches(line).each do |match|
         exp  = match[0]
-        fill = opp[exp.scan(/[0-1]/)[0]]
+        fill = opp[exp.scan(/[01]/)[0]]
         idx  = match.begin(0) + exp.index(".")
         line[idx] = fill
         action_made = true

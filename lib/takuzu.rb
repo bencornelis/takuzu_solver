@@ -1,8 +1,10 @@
 class Takuzu
-  def self.from_string(str)
-    grid = str.split("\n").map { |s| s.split("") }
+  def self.build(str)
+    grid = str.strip.split("\n").map { |line| line.strip.split(/\s+/) }
     new(grid)
   end
+
+  attr_reader :grid
 
   def initialize(grid)
     @grid = grid
@@ -18,8 +20,6 @@ class Takuzu
   end
 
   private
-
-  attr_reader :grid
 
   def execute_strategies
     action_made = true
