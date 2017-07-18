@@ -1,7 +1,7 @@
 ### takuzu_solver
 
-A ruby program for solving [takuzu] (https://en.wikipedia.org/wiki/Takuzu) puzzles.
-You can try takuzu out [here] (http://0hh1.com/).
+A ruby program for solving [takuzu](https://en.wikipedia.org/wiki/Takuzu) puzzles.
+You can try takuzu out [here](http://0hh1.com/).
 
 ### Solving Puzzles
 
