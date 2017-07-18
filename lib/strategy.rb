@@ -19,11 +19,7 @@ class Strategy
   end
 
   private
-  def apply_to lines
+  def apply_to(lines)
     raise "Implement in subclass."
-  end
-
-  def neg
-    {"0" => "1", "1" => "0"}
   end
 end

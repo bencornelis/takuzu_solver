@@ -23,7 +23,7 @@ class Takuzu
 
   def execute_strategies
     action_made = true
-    until action_made == false
+    while action_made
       strategies = create_strategies
       all_actions = strategies.map { |strategy| strategy.execute }
       action_made = all_actions.any?
