@@ -1,5 +1,5 @@
 require "spec_helper"
-require "pry"
+
 describe Takuzu do
   describe ".build" do
     it "builds the grid from a string" do

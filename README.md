@@ -7,10 +7,10 @@ You can try takuzu out [here](http://0hh1.com/).
 
 ```ruby
 grid = %(
-  1 0 . 0
-  . . . 0
-  1 . . .
-  . . . 1
+1 0 . 0
+. . . 0
+1 . . .
+. . . 1
 )
 
 Takuzu.build(grid).solve
