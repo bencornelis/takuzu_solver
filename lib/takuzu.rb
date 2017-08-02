@@ -24,13 +24,11 @@ class Takuzu
   def execute_strategies
     action_made = true
     while action_made
-      strategies = create_strategies
-      all_actions = strategies.map { |strategy| strategy.execute }
-      action_made = all_actions.any?
+      action_made = strategies.map(&:execute).any?
     end
   end
 
-  def create_strategies
+  def strategies
     Strategy.types.map { |klass| klass.new(grid) }
   end
 end
