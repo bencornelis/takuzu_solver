@@ -11,24 +11,27 @@ class Takuzu
   end
 
   def solve
-    execute_strategies
-    display
-  end
-
-  def display
-    puts grid.map { |row| row.join(" ") }.join("\n")
+    puts fill_grid.map { |row| row.join(" ") }.join("\n")
   end
 
   private
 
-  def execute_strategies
-    action_made = true
-    while action_made
-      action_made = strategies.map(&:execute).any?
+  def fill_grid
+    prev_grid, cur_grid = nil, grid
+    until prev_grid == cur_grid
+      prev_grid = cur_grid
+      cur_grid = execute_strategies(cur_grid)
+    end
+    cur_grid
+  end
+
+  def execute_strategies(cur_grid)
+    strategies.reduce(cur_grid) do |new_grid, strategy|
+      strategy.execute(new_grid)
     end
   end
 
   def strategies
-    Strategy.types.map { |klass| klass.new(grid) }
+    @strategies ||= Strategy.types.map(&:new)
   end
 end

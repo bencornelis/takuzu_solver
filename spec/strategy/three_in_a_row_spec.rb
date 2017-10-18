@@ -10,10 +10,10 @@ describe ThreeInARow do
         %w(. . . .),
       ]
 
-      strategy = ThreeInARow.new(grid)
-      strategy.execute
+      strategy = ThreeInARow.new
+      new_grid = strategy.execute(grid)
 
-      expect(grid).to eq([
+      expect(new_grid).to eq([
         %w(. . . .),
         %w(. . . .),
         %w(1 1 0 .),
@@ -29,10 +29,10 @@ describe ThreeInARow do
         %w(. . . .),
       ]
 
-      strategy = ThreeInARow.new(grid)
-      strategy.execute
+      strategy = ThreeInARow.new
+      new_grid = strategy.execute(grid)
 
-      expect(grid).to eq([
+      expect(new_grid).to eq([
         %w(0 . . .),
         %w(1 . . .),
         %w(0 . . .),
@@ -50,10 +50,10 @@ describe ThreeInARow do
         %w(. . . . . .),
       ]
 
-      strategy = ThreeInARow.new(grid)
-      strategy.execute
+      strategy = ThreeInARow.new
+      new_grid = strategy.execute(grid)
 
-      expect(grid).to eq([
+      expect(new_grid).to eq([
         %w(. . . . . .),
         %w(. . . . . .),
         %w(1 0 1 1 0 0),
@@ -71,10 +71,10 @@ describe ThreeInARow do
         %w(. . 0 0),
       ]
 
-      strategy = ThreeInARow.new(grid)
-      strategy.execute
+      strategy = ThreeInARow.new
+      new_grid = strategy.execute(grid)
 
-      expect(grid).to eq([
+      expect(new_grid).to eq([
         %w(0 0 1 .),
         %w(. . 1 .),
         %w(. . 0 .),

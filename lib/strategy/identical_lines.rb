@@ -1,29 +1,27 @@
 class IdenticalLines < Strategy
-  def apply_to(lines)
-    action_made = false
-    full_lines = lines.select { |line| full?(line) }
-    lines.each do |line|
-      next unless line.count(".") == 2
-      s1, s2 = empty_indices(line)
-      full_lines.each do |full_line|
-        if equal_off_empties?(line, full_line)
-          line[s1], line[s2] = full_line[s2], full_line[s1]
-          action_made = true
+  def apply_to_rows(rows)
+    full_rows = rows.select { |row| full?(row) }
+    rows.each do |row|
+      next unless row.count(".") == 2
+      s1, s2 = empty_indices(row)
+      full_rows.each do |full_row|
+        if equal_off_empties?(row, full_row)
+          row[s1], row[s2] = full_row[s2], full_row[s1]
         end
       end
     end
-    action_made
+    rows
   end
 
-  def empty_indices(line)
-    line.join.matches(/\./).map { |match| match.begin(0) }
+  def empty_indices(row)
+    row.join.matches(/\./).map { |match| match.begin(0) }
   end
 
-  def full?(line)
-    !line.include?(".")
+  def full?(row)
+    !row.include?(".")
   end
 
-  def equal_off_empties?(line1, line2)
-    line1.zip(line2).all? { |a,b| a == "." ? true : a == b }
+  def equal_off_empties?(row1, row2)
+    row1.zip(row2).all? { |a,b| a == "." ? true : a == b }
   end
 end

@@ -1,21 +1,19 @@
 class MatchingCounts < Strategy
-  def apply_to(lines)
-    action_made = false
-    half_size = lines[0].size/2
-    lines.each do |line|
-      next unless line.include?(".")
-      ex_mark = %w(0 1).find { |mark| line.count(mark) == half_size }
+  def apply_to_rows(rows)
+    half_size = rows[0].size/2
+    rows.each do |row|
+      next unless row.include?(".")
+      ex_mark = %w(0 1).find { |mark| row.count(mark) == half_size }
       if ex_mark
         fill = opp[ex_mark]
-        empty_indices(line).each { |idx| line[idx] = fill }
-        action_made = true
+        empty_indices(row).each { |idx| row[idx] = fill }
       end
     end
-    action_made
+    rows
   end
 
-  def empty_indices(line)
-    line.join.matches(/\./).map { |match| match.begin(0) }
+  def empty_indices(row)
+    row.join.matches(/\./).map { |match| match.begin(0) }
   end
 
   def opp

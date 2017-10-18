@@ -10,10 +10,10 @@ describe IdenticalLines do
         %w(. . . .),
       ]
 
-      strategy = IdenticalLines.new(grid)
-      strategy.execute
+      strategy = IdenticalLines.new
+      new_grid = strategy.execute(grid)
 
-      expect(grid).to eq([
+      expect(new_grid).to eq([
         %w(1 0 0 1),
         %w(1 1 0 0),
         %w(. . . .),
@@ -29,10 +29,10 @@ describe IdenticalLines do
         %w(0 0 . .),
       ]
 
-      strategy = IdenticalLines.new(grid)
-      strategy.execute
+      strategy = IdenticalLines.new
+      new_grid = strategy.execute(grid)
 
-      expect(grid).to eq([
+      expect(new_grid).to eq([
         %w(1 1 . .),
         %w(1 0 . .),
         %w(0 1 . .),

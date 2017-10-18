@@ -3,23 +3,15 @@ class Strategy
     ObjectSpace.each_object(Class).select { |klass| klass < self }
   end
 
-  attr_reader :grid
-
-  def initialize(grid)
-    @grid = grid
-  end
-
-  def execute
-    action_made = false
-    2.times do
-      @grid.transpose!
-      action_made = apply_to(grid) || action_made
-    end
-    action_made
+  def execute(grid)
+    grid = grid.map(&:dup)
+    grid = apply_to_rows(grid)
+    apply_to_rows(grid.transpose).transpose
   end
 
   private
-  def apply_to(lines)
+
+  def apply_to_rows(rows)
     raise "Implement in subclass."
   end
 end
