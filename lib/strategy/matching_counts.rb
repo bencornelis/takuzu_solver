@@ -3,9 +3,9 @@ class MatchingCounts < Strategy
     half_size = rows[0].size/2
     rows.each do |row|
       next unless row.include?(".")
-      ex_mark = %w(0 1).find { |mark| row.count(mark) == half_size }
-      if ex_mark
-        fill = opp[ex_mark]
+      half_mark = %w(0 1).find { |mark| row.count(mark) == half_size }
+      if half_mark
+        fill = opp[half_mark]
         empty_indices(row).each { |idx| row[idx] = fill }
       end
     end

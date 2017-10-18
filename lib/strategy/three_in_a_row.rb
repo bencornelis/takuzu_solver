@@ -1,7 +1,7 @@
 class ThreeInARow < Strategy
   def apply_to_rows(rows)
     rows.each do |row|
-      matches(row).each do |match|
+      all_matches(row).each do |match|
         exp  = match[0]
         fill = opp[exp.scan(/[01]/)[0]]
         idx  = match.begin(0) + exp.index(".")
@@ -11,7 +11,7 @@ class ThreeInARow < Strategy
     rows
   end
 
-  def matches(row)
+  def all_matches(row)
     patterns.map { |regex|
       row.join.matches(regex) }.flatten
   end
