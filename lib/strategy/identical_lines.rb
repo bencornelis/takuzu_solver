@@ -24,6 +24,7 @@ class IdenticalLines < Strategy
   end
 
   def equal_off_empties?(row1, row2)
-    row1.zip(row2).all? { |a,b| a == "." ? true : a == b }
+    non_empty_pairs = row1.zip(row2).reject { |pair| pair.include?(".") }
+    non_empty_pairs.all? { |mark1, mark2| mark1 == mark2 }
   end
 end
