@@ -1,21 +1,21 @@
 class ThreeInARow < Strategy
-  def apply_to(lines)
+  def apply_to_rows
     action_made = false
-    lines.each do |line|
-      all_pattern_matches(line).each do |match|
+    grid.each do |row|
+      all_pattern_matches(row).each do |match|
         exp  = match[0]
         fill = opp[exp.scan(/[01]/)[0]]
         idx  = match.begin(0) + exp.index(".")
-        line[idx] = fill
+        row[idx] = fill
         action_made = true
       end
     end
     action_made
   end
 
-  def all_pattern_matches(line)
+  def all_pattern_matches(row)
     patterns.map { |regex|
-      line.join.matches(regex) }.flatten
+      row.join.matches(regex) }.flatten
   end
 
   def patterns

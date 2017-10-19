@@ -13,13 +13,13 @@ class Strategy
     action_made = false
     2.times do
       @grid.transpose!
-      action_made = apply_to(grid) || action_made
+      changed_any_row = apply_to_rows
+      action_made ||= changed_any_row
     end
     action_made
   end
 
-  private
-  def apply_to(lines)
+  def apply_to_rows
     raise "Implement in subclass."
   end
 end
