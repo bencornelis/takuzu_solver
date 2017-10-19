@@ -2,7 +2,7 @@ class ThreeInARow < Strategy
   def apply_to(lines)
     action_made = false
     lines.each do |line|
-      matches(line).each do |match|
+      all_pattern_matches(line).each do |match|
         exp  = match[0]
         fill = opp[exp.scan(/[01]/)[0]]
         idx  = match.begin(0) + exp.index(".")
@@ -13,7 +13,7 @@ class ThreeInARow < Strategy
     action_made
   end
 
-  def matches(line)
+  def all_pattern_matches(line)
     patterns.map { |regex|
       line.join.matches(regex) }.flatten
   end
