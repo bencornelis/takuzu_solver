@@ -1,6 +1,30 @@
 require "spec_helper"
 
 describe Takuzu do
+  it 'must have a square grid' do
+    grid = [
+      %w(1 0),
+      %w(0 .),
+      %w(1 0),
+      %w(. 1)
+    ]
+
+    expect {
+      Takuzu.new(grid)
+    }.to raise_error ArgumentError, 'Input must be a square grid'
+  end
+
+  it 'must have a grid containing only the chararacters ., 1, and 0' do
+    grid = [
+      %w(1 0),
+      %w(0 x)
+    ]
+
+    expect {
+      Takuzu.new(grid)
+    }.to raise_error ArgumentError, 'Grid must only contain ., 1, and 0'
+  end
+
   describe ".build" do
     it "builds the grid from a string" do
       str = %(

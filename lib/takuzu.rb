@@ -8,6 +8,7 @@ class Takuzu
 
   def initialize(grid)
     @grid = grid
+    validate!
   end
 
   def solve
@@ -30,5 +31,24 @@ class Takuzu
 
   def strategies
     Strategy.types.map { |klass| klass.new(grid) }
+  end
+
+  def validate!
+    unless valid_size?
+      raise ArgumentError, 'Input must be a square grid'
+    end
+
+    unless valid_marks?
+      raise ArgumentError, 'Grid must only contain ., 1, and 0'
+    end
+  end
+
+  def valid_size?
+    grid.any? && grid.size == grid.first.size
+  end
+
+  def valid_marks?
+    valid_marks = %w(0 1 .)
+    grid.flatten.all? { |mark| valid_marks.include?(mark) }
   end
 end

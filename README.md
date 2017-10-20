@@ -21,6 +21,8 @@ When applying all strategies successively to all rows and columns does not chang
 
 ### Solving Puzzles
 
+Empty spaces are represented with periods.
+
 ```ruby
 grid = %(
 1 0 . 0
